@@ -9,7 +9,8 @@
     "express": "3.4.4",
     "mongodb": "*",
     "jade": "*",
-    "underscore": "*",
-    "consolidate" : "*"
+    "passport": "*",
+    "passport-local": "*",
+    "newrelic": "*"
   }
 }

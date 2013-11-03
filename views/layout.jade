@@ -2,6 +2,11 @@ doctype 5
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript' src='/js/jquery-2.0.3.min.js')
+    script(type='text/javascript' src='/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/login.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
   body
+    block navbar
     block content
