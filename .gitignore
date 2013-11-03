@@ -6,13 +6,12 @@ lib-cov
 *.out
 *.pid
 *.gz
-*.coffee
 test_result.xml
 
 pids
 logs
 results
-covergae
+coverage
 
 npm-debug.log
 node_modules
