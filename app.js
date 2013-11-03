@@ -10,8 +10,6 @@
 
   consolidate = require('consolidate');
 
-  config = require('./config')();
-
   Home = require('./controllers/Home');
 
   Conjuntas = require('./controllers/Conjuntas');
@@ -75,6 +73,8 @@
 
 
   app["delete"]('/conjuntas/:id', Conjuntas.deleteConjunta);
+
+  config = require('./config')();
 
   http.createServer(app).listen(config.port, function() {
     console.log('Express server listening on port ' + config.port);
