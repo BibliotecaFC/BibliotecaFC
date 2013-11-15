@@ -7,6 +7,8 @@ lib-cov
 *.pid
 *.gz
 *.html
+*.coffee
+
 test_result.xml
 
 pids

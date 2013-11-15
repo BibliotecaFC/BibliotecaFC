@@ -1,0 +1,45 @@
+extends ../layouts/default
+
+block navbar
+    if (user)
+        nav(class="navbar navbar-default navbar-fixed-top .navbar-inverse" role="navigation")
+            div(class="navbar-header")
+                button(type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+                    span(class="sr-only") Activar navegación
+                    span(class="icon-bar")
+                    span(class="icon-bar")
+                    span(class="icon-bar")
+                a(class="navbar-brand" href="#") ShurEbooks
+            div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+                ul(class="nav navbar-nav")
+                    li(class="active")
+                        a(href="#") Página principal
+                    li
+                        a(href="#") Abrir nueva conjunta
+                    li
+                        a(href="#") Lista de conjuntas abiertas
+                    li
+                        a(href="#") Listado de libros en la biblioteca
+                form(class="navbar-form navbar-left" role="search")
+                    div(class="form-group")
+                        input(type="text" class="form-control" placeholder="Search")
+                    button(type="submit" class="btn btn-default") Buscar
+                ul(class="nav navbar-nav navbar-right")
+                    li(class="dropdown")
+                        a(href="#" class="dropdown-toggle" data-toggle="dropdown") #{user.nickname}
+                            b(class="caret")
+                        ul(class="dropdown-menu")
+                            li
+                                a(href="#") Gestionar mis conjuntas
+                            li
+                                a(href="#") Mis participaciones
+                            li(class="divider")
+                            li
+                                a(href="/logout") Desconectar
+
+block content
+    div(class="jumbotron")
+        h1 Compra conjunta de Ebooks
+        p Plataforma para la compra conjunta de Ebooks de manera legal, pagamos un precio justo por cada libro :)
+        p
+            a(class="btn btn-primary btn-lg" role="button" href="http://www.forocoches.com/foro/showthread.php?t=3297308") Hilo oficial de Forocoches

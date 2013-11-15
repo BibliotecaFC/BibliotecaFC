@@ -1,0 +1,13 @@
+extends ../layouts/default
+block content
+    div(class="container")
+        form.signup.form-horizontal(action="/login" method="POST" class="form-signin")
+            h2(class="form-signin-heading") Conecta
+            label.control-label(for='email') Email
+            input#email(type='text', name='email', class="form-control", placeholder="Correo Electronico", required, autofocus)
+            label.control-label(for='password') Password
+            input#password(type='password', name='password', class="form-control", placeholder="Password", required)
+            label.control-label(class="checkbox") Recuerdame
+                input#rememberme(type="checkbox" value="remember-me")
+            button.btn.btn-lg.btn-primary.btn-block(type="submit") Entrar
+            a.show-login(href="/registro") Registrate

@@ -1,0 +1,15 @@
+extends ../layouts/default
+block content
+    div(class="container")
+        if (msg)
+            p #{msg}
+        form.signup.form-horizontal(action="/registro" method="POST" class="form-signin")
+            h2(class="form-signin-heading") Registrate
+            label.control-label(for='email') Email
+            input#email(type='email', name='email', class="form-control", placeholder="Correo Electrónico", required, autofocus)
+            label.control-label(for='nickname') Nick de FC
+            input#username(type='text', name="nickname", class="form-control", placeholder='Nick de Forocoches')
+            label.control-label(for='password') Password
+            input#password(type='password', name="password", class="form-control", placeholder='Password')
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Registrarse
+            a.show-login(href="/login") Login

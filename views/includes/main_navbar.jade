@@ -1,0 +1,34 @@
+nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
+    .navbar-header
+        button.navbar-toggle(type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+            span.sr-only Activar navegación
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand(href="#") ShurEbooks
+    div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+        ul.nav.navbar-nav
+            li.active
+                a(href="#") Página principal
+            li
+                a(href="#") Abrir nueva conjunta
+            li
+                a(href="#") Lista de conjuntas abiertas
+            li
+                a(href="#") Listado de libros en la biblioteca
+        form.navbar-form.navbar-left(role="search")
+            div.form-group
+                input.form-control(type="text" placeholder="Search")
+            button.btn.btn-default(type="submit") Buscar
+        ul.nav.navbar-nav.navbar-right
+            li.dropdown
+                a.dropdown-toggle(href="#" data-toggle="dropdown") #{user.nickname}
+                    b.caret
+                ul.dropdown-menu
+                    li
+                        a(href="#") Gestionar mis conjuntas
+                    li
+                        a(href="#") Mis participaciones
+                    li.divider
+                    li
+                        a(href="/logout") Desconectar
