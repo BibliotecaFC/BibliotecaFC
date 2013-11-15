@@ -1,5 +1,5 @@
 mongoose = require 'mongoose'
-User = require '../models/User'
+User = require './UserModel'
 
 Schema = mongoose.Schema
 
@@ -13,4 +13,4 @@ ConjuntaSchema = new Schema(
   usuarios: [type: Schema.Types.ObjectId, ref:'User']
 )
 
-mongoose.model 'Conjunta', ConjuntaSchema
+module.exports = mongoose.model 'Conjunta', ConjuntaSchema

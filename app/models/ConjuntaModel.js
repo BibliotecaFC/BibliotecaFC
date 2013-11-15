@@ -4,7 +4,7 @@
 
   mongoose = require('mongoose');
 
-  User = require('../models/User');
+  User = require('./UserModel');
 
   Schema = mongoose.Schema;
 
@@ -26,6 +26,6 @@
     ]
   });
 
-  mongoose.model('Conjunta', ConjuntaSchema);
+  module.exports = mongoose.model('Conjunta', ConjuntaSchema);
 
 }).call(this);

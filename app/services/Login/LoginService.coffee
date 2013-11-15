@@ -1,10 +1,5 @@
-mongoose = require 'mongoose'
-User = require '../models/User'
-
 login_view = 'users/login'
-registro_view = 'users/registro'
 conjuntas_view = '/'
-user_view = 'users/show'
 
 ###Login POST###
 exports.signin = (req, res) ->
@@ -13,13 +8,13 @@ exports.signin = (req, res) ->
 
 ###Login GET###
 exports.login = (req, res) ->
-  if req.user
+  if req.user and req.user.active is true
     res.redirect conjuntas_view
     return
   else
     res.render login_view,
       title: 'Login'
-      message: req.flash 'error'
+      message: req.flash 'Error'
       user: req.user
     return
 
@@ -28,3 +23,4 @@ exports.logout = (req, res) ->
   do req.logout
   res.redirect 'login'
   return
+

@@ -1,5 +1,5 @@
 mongoose = require 'mongoose'
-Conjunta = mongoose.model 'Conjunta'
+ConjuntaModel = mongoose.model 'Conjunta'
 
 exports.findAllOpened = (req, res) ->
   console.log req.params+" "+req.params

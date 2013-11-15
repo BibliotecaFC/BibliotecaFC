@@ -1,5 +1,7 @@
 extends ../layouts/default
 block content
+    if (message)
+        p #{message}
     div(class="container")
         form.signup.form-horizontal(action="/login" method="POST" class="form-signin")
             h2(class="form-signin-heading") Conecta

@@ -1,17 +1,18 @@
 mongoose = require 'mongoose'
 passportLocalMongoose = require 'passport-local-mongoose'
-Conjunta = require '../models/Conjunta'
+COnjunta = require './ConjuntaModel'
 
 Schema = mongoose.Schema
 
-User = new Schema(
+UserSchema = new Schema(
   nickname: String
   admin: type: Boolean, default: false
   updated: type: Date, default: Date.now
-  conjuntas: [type: Schema.Types.ObjectId, ref: 'Conjunta']
+  active: type: Boolean, default: false
+  conjuntas: [type: Schema.Types.ObjectId, ref: 'COnjunta']
 )
 
-User.plugin passportLocalMongoose,
+UserSchema.plugin passportLocalMongoose,
   usernameField: "email"
   incorrectPasswordError: "Contraseña erronea"
   incorrectUsernameError: "Nombre de usuario incorrecto"
@@ -19,4 +20,4 @@ User.plugin passportLocalMongoose,
   missingPasswordError: "Contraseña vacia"
   userExistsError: "El usuario ya existe"
 
-module.exports = mongoose.model 'User', User
+module.exports = mongoose.model 'User', UserSchema

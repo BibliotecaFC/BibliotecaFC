@@ -33,7 +33,7 @@ module.exports = (app, config, passport) ->
     app.use app.router
 
     app.use (err, req, res, next) ->
-      return do next if ~err.message.indexOf('not found')
+      return do next if ~err.message.indexOf 'not found'
       res.status(500).render '500', error: err.stack
       return
     app.use (req, res, next) ->
