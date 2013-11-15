@@ -18,7 +18,7 @@ exports.registro = (req, res) ->
       user: new User()
     return
 
-###Registrar usuario GET###
+###Registrar usuario POST###
 exports.create = (req, res) ->
   User.register new User(email: req.body.email,nickname:req.body.nickname), req.body.password, (err, user) ->
     res.render registro_view,msg: err.message  if err

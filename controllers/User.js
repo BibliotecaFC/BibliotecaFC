@@ -30,7 +30,7 @@
     }
   };
 
-  /*Registrar usuario GET*/
+  /*Registrar usuario POST*/
 
 
   exports.create = function(req, res) {
