@@ -28,6 +28,7 @@
       "gzippo": "latest",
       "async": "latest",
       "view-helpers": "latest",
-      "forever": "latest"
+      "forever": "latest",
+      "newrelic": "latest"
   }
 }
