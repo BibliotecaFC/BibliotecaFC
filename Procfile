@@ -1,1 +1,1 @@
-web: node app.js pro
+web: node app.js
