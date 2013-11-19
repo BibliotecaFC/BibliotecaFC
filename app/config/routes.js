@@ -21,7 +21,7 @@
 
     app.get('/registro', UserController.renderForm);
     app.post('/registro', UserController.createUser);
-    app.get('/users/:userId', UserController.findById);
+    app.get('/users/:user', UserController.findByUsername);
     /*Rutas para las conjuntas*/
 
     app.get('/conjuntas', ConjuntaController.findAllOpened);

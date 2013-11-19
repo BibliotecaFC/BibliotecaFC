@@ -27,7 +27,7 @@
     conjuntas: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'COnjunta'
+        ref: 'Conjunta'
       }
     ]
   });

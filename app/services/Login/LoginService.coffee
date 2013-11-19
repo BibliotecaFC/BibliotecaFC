@@ -24,3 +24,6 @@ exports.logout = (req, res) ->
   res.redirect 'login'
   return
 
+exports.isLogged = (req, res) ->
+  req.user and req.user.active is true
+

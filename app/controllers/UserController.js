@@ -21,8 +21,8 @@
   /*Mostrar usuario GET*/
 
 
-  exports.findById = function(req, res, next, id) {
-    UserService.findById(req, res, next, id);
+  exports.findByUsername = function(req, res) {
+    UserService.findByUsername(req, res);
   };
 
 }).call(this);

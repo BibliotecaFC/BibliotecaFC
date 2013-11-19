@@ -9,27 +9,29 @@ conjuntas_view = 'index'
 user_view = '../users/show'
 
 exports.createUser = (req, res)->
-  UserModel.register new UserModel(email: req.body.email,nickname:req.body.nickname), req.body.password, (err, user) ->
-    res.render registro_view,msg: err.message  if err
-    res.render conjuntas_view,user: user if user
-    return
+  console.log req.body.repeat_password is req.body.password
+  if req.body.repeat_password isnt req.body.password
+    res.render registro_view,msg:'Las contraseñas no coinciden'
+  else
+    UserModel.register new UserModel(email: req.body.email,nickname:req.body.nickname), req.body.password, (err, user) ->
+      res.render registro_view,msg: err.message  if err
+      res.render conjuntas_view,user: user if user
+      return
   return
 
 exports.renderForm = (req, res) ->
-  if req.user
+  if req.user and req.user.active is true
     res.redirect main_ruta
   else
     res.render registro_view,
-    title: 'Registrarse'
-    user: new UserModel()
+      title: 'Registrarse'
+      user: new UserModel()
   return
 
-exports.findByID = ->
-  UserModel.findOne( _id : id).exec (err, user) ->
-    return next err if err
-    return next new Error('Fallo cargando el usuario ' + id) if !user
-    req.profile = user
-    do next
+exports.findByUsername = (req, res) ->
+  UserModel.findByUsername req.params.user, (err, user) ->
+    res.render conjuntas_view if err
+    res.render conjuntas_view,user: user if user
     return
   return
 

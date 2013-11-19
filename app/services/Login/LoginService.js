@@ -20,7 +20,6 @@
     if (req.user && req.user.active === true) {
       res.redirect(conjuntas_view);
     } else {
-
       res.render(login_view, {
         title: 'Login',
         message: req.flash('Error'),
@@ -35,6 +34,10 @@
   exports.logout = function(req, res) {
     req.logout();
     res.redirect('login');
+  };
+
+  exports.isLogged = function(req, res) {
+    return req.user && req.user.active === true;
   };
 
 }).call(this);

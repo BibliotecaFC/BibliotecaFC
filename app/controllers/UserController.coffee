@@ -11,6 +11,6 @@ exports.createUser = (req, res) ->
   return
 
 ###Mostrar usuario GET###
-exports.findById = (req, res, next, id) ->
-  UserService.findById req, res, next, id
+exports.findByUsername = (req, res) ->
+  UserService.findByUsername req, res
   return

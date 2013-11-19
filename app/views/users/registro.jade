@@ -7,11 +7,13 @@ block content
             h2(class="form-signin-heading") Registrate
             label.control-label(for='email') Email
             input#email(type='email', name='email', class="form-control", placeholder="Correo Electrónico", required, autofocus)
+            label.control-label(for='repite_email') Repite Email
+            input#repite_email(type='email', name='repite_email', class="form-control", placeholder="Repite Correo Electrónico", required)
             label.control-label(for='nickname') Nick de FC
-            input#username(type='text', name="nickname", class="form-control", placeholder='Nick de Forocoches')
+            input#username(type='text', name="nickname", class="form-control", placeholder='Nick de Forocoches', required)
             label.control-label(for='password') Contraseña
-            input#password(type='password', name="password", class="form-control", placeholder='Contraseña')
+            input#password(type='password', name="password", class="form-control", placeholder='Contraseña', required)
             label.control-label(for='repeat_password') Repita la contraseña
-            input#password(type='password', name="repeat_password", class="form-control", placeholder='Repita la contraseña')
+            input#repeat_password(type='password', name="repeat_password", class="form-control", placeholder='Repita la contraseña', required)
             button.btn.btn-lg.btn-primary.btn-block(type='submit') Registrarse
-            a.show-login(href="/login") Login
+            a.show-login.btn.btn-lg.btn-primary.btn-block(href="/login") Login

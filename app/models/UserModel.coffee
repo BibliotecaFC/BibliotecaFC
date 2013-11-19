@@ -9,7 +9,7 @@ UserSchema = new Schema(
   admin: type: Boolean, default: false
   updated: type: Date, default: Date.now
   active: type: Boolean, default: false
-  conjuntas: [type: Schema.Types.ObjectId, ref: 'COnjunta']
+  conjuntas: [type: Schema.Types.ObjectId, ref: 'Conjunta']
 )
 
 UserSchema.plugin passportLocalMongoose,

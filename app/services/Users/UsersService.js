@@ -21,25 +21,32 @@
   user_view = '../users/show';
 
   exports.createUser = function(req, res) {
-    UserModel.register(new UserModel({
-      email: req.body.email,
-      nickname: req.body.nickname
-    }), req.body.password, function(err, user) {
-      if (err) {
-        res.render(registro_view, {
-          msg: err.message
-        });
-      }
-      if (user) {
-        res.render(conjuntas_view, {
-          user: user
-        });
-      }
-    });
+    console.log(req.body.repeat_password === req.body.password);
+    if (req.body.repeat_password !== req.body.password) {
+      res.render(registro_view, {
+        msg: 'Las contraseñas no coinciden'
+      });
+    } else {
+      UserModel.register(new UserModel({
+        email: req.body.email,
+        nickname: req.body.nickname
+      }), req.body.password, function(err, user) {
+        if (err) {
+          res.render(registro_view, {
+            msg: err.message
+          });
+        }
+        if (user) {
+          res.render(conjuntas_view, {
+            user: user
+          });
+        }
+      });
+    }
   };
 
   exports.renderForm = function(req, res) {
-    if (req.user) {
+    if (req.user && req.user.active === true) {
       res.redirect(main_ruta);
     } else {
       res.render(registro_view, {
@@ -49,18 +56,16 @@
     }
   };
 
-  exports.findByID = function() {
-    UserModel.findOne({
-      _id: id
-    }).exec(function(err, user) {
+  exports.findByUsername = function(req, res) {
+    UserModel.findByUsername(req.params.user, function(err, user) {
       if (err) {
-        return next(err);
+        res.render(conjuntas_view);
       }
-      if (!user) {
-        return next(new Error('Fallo cargando el usuario ' + id));
+      if (user) {
+        res.render(conjuntas_view, {
+          user: user
+        });
       }
-      req.profile = user;
-      next();
     });
   };
 
