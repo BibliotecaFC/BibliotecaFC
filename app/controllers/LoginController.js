@@ -4,25 +4,27 @@
 
   LoginService = require('../services/Login/LoginService');
 
-  /*Login POST*/
-
-
   exports.signin = function(req, res) {
-    LoginService.signin(req, res);
+    var vista;
+    vista = LoginService.signin;
+    return res.redirect(vista);
   };
-
-  /*Login GET*/
-
 
   exports.login = function(req, res) {
-    LoginService.login(req, res);
+    var arrayDatos;
+    arrayDatos = new Array;
+    arrayDatos = LoginService.login(req);
+    if (arrayDatos[0] === 'redirect') {
+      return res.redirect(arrayDatos[1]);
+    } else {
+      return res.render(arrayDatos[1], arrayDatos[2]);
+    }
   };
 
-  /*Logout GET*/
-
-
   exports.logout = function(req, res) {
-    LoginService.logout(req, res);
+    var vista;
+    vista = LoginService.logout(req);
+    return res.redirect(vista);
   };
 
 }).call(this);

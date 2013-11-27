@@ -21,6 +21,7 @@
       "passport-local": "latest",
       "passport-local-mongoose": "latest",
       "view-helpers": "latest",
-      "newrelic": "latest"
+      "newrelic": "latest",
+      "bytes": "latest"
   }
 }

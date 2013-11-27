@@ -4,25 +4,16 @@
 
   UserService = require('../services/Users/UsersService');
 
-  /*Registrar usuario GET*/
-
-
   exports.renderForm = function(req, res) {
-    UserService.renderForm(req, res);
+    return UserService.renderForm(req, res);
   };
-
-  /*Registrar usuario POST*/
-
 
   exports.createUser = function(req, res) {
-    UserService.createUser(req, res);
+    return UserService.createUser(req, res);
   };
 
-  /*Mostrar usuario GET*/
-
-
   exports.findByUsername = function(req, res) {
-    UserService.findByUsername(req, res);
+    return UserService.findByUsername(req, res);
   };
 
 }).call(this);

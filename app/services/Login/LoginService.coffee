@@ -1,29 +1,47 @@
 login_view = 'users/login'
-conjuntas_view = '/'
+conjuntas_page = '/'
+login_page = 'login'
 
-###Login POST###
-exports.signin = (req, res) ->
-  res.redirect('/');
-  return
+exports.signin = ->
+  conjuntas_page
 
-###Login GET###
-exports.login = (req, res) ->
-  if req.user and req.user.active is true
-    res.redirect conjuntas_view
-    return
+exports.login = (req) ->
+  activo = this.isLogged req
+  arrayDatos = new Array()
+  modo = selectMode req, activo
+  vista = selectView activo
+  datos = selectDatos req, activo
+  arrayDatos.push modo
+  arrayDatos.push vista
+  arrayDatos.push datos
+  arrayDatos
+
+exports.logout = (req) ->
+  do req.logout
+  login_page
+
+exports.isLogged = (req) ->
+  req.user and req.user.active is true
+
+selectView = (activo) ->
+  if activo is true
+    conjuntas_page
   else
-    res.render login_view,
+    login_view
+
+selectDatos = (req, activo) ->
+  if activo is true
+    datos =
+      title: 'Login'
+  else
+    datos =
       title: 'Login'
       message: req.flash 'Error'
       user: req.user
-    return
+  datos
 
-###Logout GET###
-exports.logout = (req, res) ->
-  do req.logout
-  res.redirect 'login'
-  return
-
-exports.isLogged = (req, res) ->
-  req.user and req.user.active is true
-
+selectMode = (req, activo) ->
+  if activo is true
+    'redirect'
+  else
+    'render'

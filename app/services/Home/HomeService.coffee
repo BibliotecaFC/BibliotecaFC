@@ -1,15 +1,31 @@
+LoginService = require '../Login/LoginService'
+
 conjuntas_view = 'index'
 login_view = 'users/login'
 
-exports.index = (req, res) ->
-  if req.user and req.user.active is true
-    res.render conjuntas_view,
+exports.index = (req) ->
+  activo = LoginService.isLogged req
+  arrayDatos = new Array()
+  vista = selectView activo
+  datos = selectData req, activo
+  arrayDatos.push vista
+  arrayDatos.push datos
+  arrayDatos
+
+selectView = (activo) ->
+  if activo is true
+    conjuntas_view
+  else
+    login_view
+
+selectData = (req, activo) ->
+  if activo is true
+    datos =
       title: 'Passport Setup'
       user: req.user
-    return
   else
-    res.render login_view,
+    datos =
       title: 'Login'
       message: req.flash 'error'
       user: req.user
-    return
+  datos

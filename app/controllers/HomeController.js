@@ -5,7 +5,10 @@
   HomeService = require('../services/Home/HomeService');
 
   exports.index = function(req, res) {
-    HomeService.index(req, res);
+    var datosVista;
+    datosVista = new Array();
+    datosVista = HomeService.index(req);
+    return res.render(datosVista[0], datosVista[1]);
   };
 
 }).call(this);

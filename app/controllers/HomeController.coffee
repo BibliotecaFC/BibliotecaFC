@@ -1,5 +1,6 @@
 HomeService = require '../services/Home/HomeService'
 
 exports.index = (req, res) ->
-  HomeService.index req, res
-  return
+  datosVista = new Array()
+  datosVista = HomeService.index req
+  res.render datosVista[0], datosVista[1]

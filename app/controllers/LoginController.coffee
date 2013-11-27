@@ -1,16 +1,17 @@
 LoginService = require '../services/Login/LoginService'
 
-###Login POST###
 exports.signin = (req, res) ->
-  LoginService.signin req, res
-  return
+  vista = LoginService.signin
+  res.redirect vista
 
-###Login GET###
 exports.login = (req, res) ->
-  LoginService.login req, res
-  return
+  arrayDatos = new Array
+  arrayDatos = LoginService.login req
+  if arrayDatos[0] is 'redirect'
+    res.redirect arrayDatos[1]
+  else
+    res.render arrayDatos[1], arrayDatos[2]
 
-###Logout GET###
 exports.logout = (req, res) ->
-  LoginService.logout req, res
-  return
+  vista = LoginService.logout req
+  res.redirect vista
