@@ -14,11 +14,10 @@ fs.readdirSync(models_dir).forEach (file) ->
   if file[0] is '.' or file.indexOf('coffee') > 0
     return
   require models_dir+'/'+ file
-  return
+
+app = do express
 
 require('./config/passport') passport
-
-app = express()
 
 require('./config/express') app, config, passport
 

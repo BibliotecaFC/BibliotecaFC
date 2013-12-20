@@ -12,6 +12,7 @@
     "npm":  "1.2.x"
   },
   "dependencies": {
+      "coffee-script": "latest",
       "express": "latest",
       "jade": "latest",
       "connect-mongo": "latest",
@@ -22,6 +23,7 @@
       "passport-local-mongoose": "latest",
       "view-helpers": "latest",
       "newrelic": "latest",
-      "bytes": "latest"
+      "bytes": "latest",
+      "q": "latest"
   }
 }

@@ -6,7 +6,7 @@ exports.signin = ->
   conjuntas_page
 
 exports.login = (req) ->
-  activo = this.isLogged req
+  activo = @isLogged req
   arrayDatos = new Array()
   modo = selectMode req, activo
   vista = selectView activo

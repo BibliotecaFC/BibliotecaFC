@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 passportLocalMongoose = require 'passport-local-mongoose'
-COnjunta = require './ConjuntaModel'
+Conjunta = require './ConjuntaModel'
 
 Schema = mongoose.Schema
 

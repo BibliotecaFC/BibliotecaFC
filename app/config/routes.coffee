@@ -10,12 +10,17 @@ module.exports = (app, passport) ->
 
   ###Rutas de Login###
   app.get '/login', LoginController.login
-  app.post '/login', passport.authenticate('local', successRedirect: '/', failureRedirect: '/login'), LoginController.signin
+  app.post '/login', passport.authenticate('local',
+    successRedirect: '/'
+    failureRedirect: '/login'
+    successFlash: 'Bienvenido'
+    failureFlash: 'Credenciales no válidas'), LoginController.signin
   app.get '/logout', LoginController.logout
 
   ###Rutas para la gestion de usuarios###
   app.get '/registro', UserController.renderForm
   app.post '/registro', UserController.createUser
+  app.get '/perfil', UserController.getPerfil
   app.get '/users/:user', UserController.findByUsername
 
 
@@ -29,4 +34,3 @@ module.exports = (app, passport) ->
   app.post '/conjuntas', ConjuntaController.addConjunta
   app.put '/conjuntas/:id', ConjuntaController.updateConjunta
   app.delete '/conjuntas/:id', ConjuntaController.deleteConjunta
-  return
