@@ -3,13 +3,14 @@ expressSession = require 'express-session'
 cookieParser = require 'cookie-parser'
 methodOverride = require 'method-override'
 bodyParser = require 'body-parser'
+compression = require 'compression'
 mongoStore = require('connect-mongo') expressSession
 flash = require 'connect-flash'
 helpers = require 'view-helpers'
 
 module.exports = (app, config, passport) ->
   app.set 'showStackError', true
-  app.use express.compress(
+  app.use compression(
     filter: (req, res) ->
       return /json|text|javascript|css/.test res.getHeader('Content-Type'),
     level: 9

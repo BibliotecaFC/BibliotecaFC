@@ -19,6 +19,7 @@
       "cookie-parser" : "latest",
       "method-override" : "latest",
       "body-parser" : "latest",
+      "compression" : "latest",
       "connect-mongo": "latest",
       "mongoose": "latest",
       "connect-flash": "latest",
