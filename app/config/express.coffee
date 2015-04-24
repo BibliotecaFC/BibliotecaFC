@@ -4,6 +4,9 @@ cookieParser = require 'cookie-parser'
 methodOverride = require 'method-override'
 bodyParser = require 'body-parser'
 compression = require 'compression'
+favicon = require 'serve-favicon'
+serveStatic = require 'serve-static'
+morgan = require 'morgan'
 mongoStore = require('connect-mongo') expressSession
 flash = require 'connect-flash'
 helpers = require 'view-helpers'
@@ -15,9 +18,9 @@ module.exports = (app, config, passport) ->
       return /json|text|javascript|css/.test res.getHeader('Content-Type'),
     level: 9
   )
-  app.use do express.favicon
-  app.use express.static(config.root + '/public')
-  app.use(express.logger 'dev') if process.env.NODE_ENV isnt 'test'
+  app.use do favicon
+  app.use serveStatic(config.root + '/public')
+  app.use(morgan 'dev') if process.env.NODE_ENV isnt 'test'
   app.set 'views', config.root + '/views'
   app.set 'view engine', 'jade'
   app.configure(->
