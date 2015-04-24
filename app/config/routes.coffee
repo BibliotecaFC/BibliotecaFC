@@ -34,3 +34,5 @@ module.exports = (app, passport) ->
   app.post '/conjuntas', ConjuntaController.addConjunta
   app.put '/conjuntas/:id', ConjuntaController.updateConjunta
   app.delete '/conjuntas/:id', ConjuntaController.deleteConjunta
+
+  sys.puts(sys.inspect(app));
