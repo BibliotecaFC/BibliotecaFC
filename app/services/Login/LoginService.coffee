@@ -21,6 +21,7 @@ exports.logout = (req) ->
   login_page
 
 exports.isLogged = (req) ->
+  console.log req.user
   req.user and req.user.active is true
 
 selectView = (activo) ->
