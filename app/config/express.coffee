@@ -27,10 +27,12 @@ module.exports = (app, config, passport) ->
   app.use(helpers config.app.name)
   app.use cookieParser('bfc')
   app.use do bodyParser.json
-  app.use do bodyParser.urlencoded
+  app.use bodyParser.urlencoded(extended: true)
   app.use do methodOverride
   app.use expressSession(
     secret: 'bibliotecafc',
+    resave: false,
+    saveUninitialized: false,
     store: new mongoStore
       url: config.db
       collection : 'sessions'
@@ -38,7 +40,6 @@ module.exports = (app, config, passport) ->
   app.use do flash
   app.use do passport.initialize
   app.use do passport.session
-  app.use app.router
 
   app.use (err, req, res, next) ->
     return do next if ~err.message.indexOf 'not found'
