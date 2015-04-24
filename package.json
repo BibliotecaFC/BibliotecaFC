@@ -1,5 +1,6 @@
 {
   "name": "BibliotecaFC",
+  "main": "app.js",
   "description": "Proyecto para gestionar la biblioteca privada de Ebooks para Forocoches",
   "version": "1.0.0",
   "private": true,

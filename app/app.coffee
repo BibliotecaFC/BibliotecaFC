@@ -19,9 +19,9 @@ app = do express
 
 require('./config/passport') passport
 
-require('./config/express') app, config, passport
-
 require('./config/routes') app, passport
+
+require('./config/express') app, config, passport
 
 port = process.env.PORT or 3000
 app.listen port
