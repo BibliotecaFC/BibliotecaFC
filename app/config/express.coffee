@@ -1,14 +1,10 @@
 express = require 'express'
-expressSession = require 'express-session'
-cookieParser = require 'cookie-parser'
 methodOverride = require 'method-override'
 bodyParser = require 'body-parser'
 compression = require 'compression'
 favicon = require 'serve-favicon'
 serveStatic = require 'serve-static'
 morgan = require 'morgan'
-mongoStore = require('connect-mongo') expressSession
-flash = require 'connect-flash'
 helpers = require 'view-helpers'
 
 module.exports = (app, config, passport) ->
@@ -23,21 +19,11 @@ module.exports = (app, config, passport) ->
   app.use(morgan 'dev') if process.env.NODE_ENV isnt 'test'
   app.set 'views', config.root + '/views'
   app.set 'view engine', 'jade'
-  ##app.configure(->
   app.use(helpers config.app.name)
-  app.use cookieParser('bfc')
+
   app.use do bodyParser.json
   app.use bodyParser.urlencoded(extended: true)
   app.use do methodOverride
-  app.use expressSession(
-    secret: 'bibliotecafc',
-    resave: false,
-    saveUninitialized: false,
-    store: new mongoStore
-      url: config.db
-      collection : 'sessions'
-  )
-  app.use do flash
   app.use do passport.initialize
   app.use do passport.session
 
@@ -49,5 +35,4 @@ module.exports = (app, config, passport) ->
     res.status(404).render '404', url: req.originalUrl, error: 'Not found'
     return
   return
-  ##)
   return

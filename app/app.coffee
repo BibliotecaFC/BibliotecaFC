@@ -19,6 +19,8 @@ app = do express
 
 require('./config/passport') passport
 
+require('./config/expressSession') app, config
+
 require('./config/routes') app, passport
 
 require('./config/express') app, config, passport
