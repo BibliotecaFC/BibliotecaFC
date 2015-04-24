@@ -6,31 +6,31 @@ module.exports = (app, passport) ->
   ConjuntaController = require '../controllers/ConjuntaController'
 
   ###Ruta página principal###
-  app.get '/', HomeController.index
+  app.route.get '/', HomeController.index
 
   ###Rutas de Login###
-  app.get '/login', LoginController.login
-  app.post '/login', passport.authenticate('local',
+  app.route.get '/login', LoginController.login
+  app.route.post '/login', passport.authenticate('local',
     successRedirect: '/'
     failureRedirect: '/login'
     successFlash: 'Bienvenido'
     failureFlash: 'Credenciales no válidas'), LoginController.signin
-  app.get '/logout', LoginController.logout
+  app.route.get '/logout', LoginController.logout
 
   ###Rutas para la gestion de usuarios###
-  app.get '/registro', UserController.renderForm
-  app.post '/registro', UserController.createUser
-  app.get '/perfil', UserController.getPerfil
-  app.get '/users/:user', UserController.findByUsername
+  app.route.get '/registro', UserController.renderForm
+  app.route.post '/registro', UserController.createUser
+  app.route.get '/perfil', UserController.getPerfil
+  app.route.get '/users/:user', UserController.findByUsername
 
 
   ###Rutas para las conjuntas###
-  app.get '/conjuntas', ConjuntaController.findAllOpened
-  app.get '/conjuntas/abiertas', ConjuntaController.findAllOpened
-  app.get '/conjuntas/cerradas', ConjuntaController.findAllClosed
-  app.get '/conjuntas/nueva', ConjuntaController.formNewConjunta
-  app.get '/conjuntas/ultimas', ConjuntaController.findLatestClosed
-  app.get '/conjuntas/:id', ConjuntaController.findById
-  app.post '/conjuntas', ConjuntaController.addConjunta
-  app.put '/conjuntas/:id', ConjuntaController.updateConjunta
-  app.delete '/conjuntas/:id', ConjuntaController.deleteConjunta
+  app.route.get '/conjuntas', ConjuntaController.findAllOpened
+  app.route.get '/conjuntas/abiertas', ConjuntaController.findAllOpened
+  app.route.get '/conjuntas/cerradas', ConjuntaController.findAllClosed
+  app.route.get '/conjuntas/nueva', ConjuntaController.formNewConjunta
+  app.route.get '/conjuntas/ultimas', ConjuntaController.findLatestClosed
+  app.route.get '/conjuntas/:id', ConjuntaController.findById
+  app.route.post '/conjuntas', ConjuntaController.addConjunta
+  app.route.put '/conjuntas/:id', ConjuntaController.updateConjunta
+  app.route.delete '/conjuntas/:id', ConjuntaController.deleteConjunta
