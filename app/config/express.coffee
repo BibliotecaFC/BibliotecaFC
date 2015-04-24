@@ -18,7 +18,7 @@ module.exports = (app, config, passport) ->
       return /json|text|javascript|css/.test res.getHeader('Content-Type'),
     level: 9
   )
-  app.use do favicon
+  ##app.use do favicon
   app.use serveStatic(config.root + '/public')
   app.use(morgan 'dev') if process.env.NODE_ENV isnt 'test'
   app.set 'views', config.root + '/views'
