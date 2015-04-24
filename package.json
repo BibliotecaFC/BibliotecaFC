@@ -17,6 +17,8 @@
       "jade": "latest",
       "express-session": "latest",
       "cookie-parser" : "latest",
+      "method-override" : "latest",
+      "body-parser" : "latest",
       "connect-mongo": "latest",
       "mongoose": "latest",
       "connect-flash": "latest",

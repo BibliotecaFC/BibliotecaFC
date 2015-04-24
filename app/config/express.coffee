@@ -1,5 +1,9 @@
 express = require 'express'
-mongoStore = require('connect-mongo') express
+expressSession = require 'express-session'
+cookieParser = require 'cookie-parser'
+methodOverride = require 'method-override'
+bodyParser = require 'body-parser'
+mongoStore = require('connect-mongo') expressSession
 flash = require 'connect-flash'
 helpers = require 'view-helpers'
 
@@ -17,11 +21,11 @@ module.exports = (app, config, passport) ->
   app.set 'view engine', 'jade'
   app.configure(->
     app.use(helpers config.app.name)
-    app.use express.cookieParser('bfc')
-    app.use do express.json
-    app.use do express.urlencoded
-    app.use do express.methodOverride
-    app.use express.session(
+    app.use cookieParser('bfc')
+    app.use do bodyParser.json
+    app.use do bodyParser.urlencoded
+    app.use do methodOverride
+    app.use expressSession(
       secret: 'bibliotecafc',
       store: new mongoStore
         url: config.db
