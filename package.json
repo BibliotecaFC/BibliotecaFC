@@ -24,6 +24,7 @@
       "view-helpers": "latest",
       "newrelic": "latest",
       "bytes": "latest",
-      "q": "latest"
+      "q": "latest",
+      "loggly": "latest"
   }
 }
